@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/namhokim/serami/issues"
   },
-  "homepage": "https://github.com/namhokim/serami#readme"
+  "homepage": "https://github.com/namhokim/serami#readme",
+  "devDependencies": {
+    "electron": "^5.0.1"
+  }
 }
