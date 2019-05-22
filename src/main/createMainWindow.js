@@ -12,7 +12,6 @@ class MainWindow {
         this.window.on("closed", () => {
             this.window = null;
         });
-        //this.window.webContents.openDevTools();
     }
 }
 

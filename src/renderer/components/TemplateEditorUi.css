@@ -1,0 +1,14 @@
+.templateEditor {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+
+.editorArea {
+    margin-right: 8px;
+}
+
+.previewerArea {
+    margin-left: 8px;
+}
