@@ -1,8 +1,9 @@
 import React from "react";
 import Editor from "./Editor";
-import style from "./TemplateEditorUi.css";
+import Previewer from "./Previewer";
+import style from "./HandlebarsEditorUi.css";
 
-export default class TemplateEditorUi extends React.Component {
+export default class HandlebarsEditorUi extends React.Component {
     constructor(props) {
         super(props);
         this.state = { text: "" };
@@ -14,13 +15,17 @@ export default class TemplateEditorUi extends React.Component {
     }
     render() {
         return (
-            <div className={style.templateEditor}>
+            <div className={style.handlebarsEditor}>
                 <Editor
                     className={style.editorArea}
                     value={this.state.text}
                     onChange={this.onChangeText}
                 />
+                <Previewer
+                    className={style.previewerArea}
+                    value={this.state.text}
+                />
             </div>
         )
     }
-} 
+}

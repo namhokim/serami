@@ -1,5 +1,5 @@
 import React from "react";
 import { render } from "react-dom";
-import TemplateEditorUi from "./components/TemplateEditorUi";
+import HandlebarsEditorUi from "./components/HandlebarsEditorUi";
 
-render(<TemplateEditorUi />, document.getElementById("app"));
+render(<HandlebarsEditorUi />, document.getElementById("app"));
