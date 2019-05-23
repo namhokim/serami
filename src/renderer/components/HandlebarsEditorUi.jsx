@@ -8,7 +8,7 @@ import style from "./HandlebarsEditorUi.css";
 export default class HandlebarsEditorUi extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { text: "", templateText: '<div class="entry"><h1>{{title}}</h1><div class="body">{{body}}</div></div>', contextText: "" };
+        this.state = { text: "", templateText: "", contextText: "" };
         this.onChangeTemplateText = this.onChangeTemplateText.bind(this);
         this.onChangeContextText = this.onChangeContextText.bind(this);
         this.evaluateHandlebars = this.evaluateHandlebars.bind(this);
@@ -42,11 +42,10 @@ export default class HandlebarsEditorUi extends React.Component {
                 this.setState({ text: `<h3>context code should be object or function.</h3>${contextCode}` });
                 return;
             }
-            var context = "";
             if (typeofContext === 'function') {
-                context = evaluatedContext();
+                var context = evaluatedContext();
             } else {
-                context = evaluatedContext;
+                var context = evaluatedContext;
             }
 
             var template = Handlebars.compile(templateText);
