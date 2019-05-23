@@ -4,7 +4,7 @@ import style from "./Editor.css";
 export default function Editor(props) {
     return (
         <textarea
-            id="editor"
+            id={props.id}
             className={`${style.editor} ${props.className}`}
             value={props.value}
             onChange={props.onChange}

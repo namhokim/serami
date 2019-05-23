@@ -3,7 +3,9 @@ const { BrowserWindow } = require("electron");
 class MainWindow {
     constructor() {
         this.window = new BrowserWindow({
-            width: 800, height: 600,
+            width: 800,
+            height: 600,
+            allowEval: true,
             webPreferences: {
                 nodeIntegration: true
             }

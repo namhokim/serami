@@ -5,18 +5,20 @@ module.exports = {
         __filename: false
     },
     resolve: {
-        extensions: [".js", ".jsx"]
+        extensions: [".js", ".jsx"],
+        alias: {
+            'handlebars': 'handlebars/dist/handlebars.js'
+        }
     },
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
                 loader: "babel-loader"
             },
             {
                 test: /\.css$/,
-                loader: [ "style-loader", "css-loader?modules" ]
+                loader: ["style-loader", "css-loader?modules"]
             }
         ]
     },
