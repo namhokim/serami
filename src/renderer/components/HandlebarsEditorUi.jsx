@@ -61,7 +61,7 @@ export default class HandlebarsEditorUi extends React.Component {
 
     render() {
         return (
-            <div className={style.handlebarsEditor}>
+            <div className={`pane-group ${style.handlebarsEditor}`}>
                 <Editor
                     id="templateEditor"
                     className={style.editorArea}
