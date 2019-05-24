@@ -67,6 +67,14 @@ export default class HandlebarsEditorUi extends React.Component {
         ipcRenderer.on("REQUEST_TEXT_CONTEXT", () => {
             ipcRenderer.send("REPLY_TEXT_CONTEXT", this.state.contextText);
         });
+        ipcRenderer.on("SEND_TEXT_TEMPLATE", (_e, text) => {
+            this.setState({ templateText: text });
+            this.evaluateHandlebars(text, this.state.contextText);
+        })
+        ipcRenderer.on("SEND_TEXT_CONTEXT", (_e, text) => {
+            this.setState({ contextText: text });
+            this.evaluateHandlebars(this.state.templateText, text);
+        })
     }
 
     componentWillUnMount() {

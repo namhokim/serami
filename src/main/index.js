@@ -2,18 +2,11 @@ const { app, dialog } = require("electron");
 import createMainWindow from "./createMainWindow";
 import setAppMenu from "./setAppMenu";
 import showSaveAsNewFileDialog from "./showSaveAsNewFileDialog";
+import showOpenFileDialog from "./showOpenFileDialog";
 import createFileManager from "./createFileManager";
 
 let mainWindow = null;
 let fileManager = null;
-
-function openTemplateFile() {
-    console.log("openTemplateFile");
-}
-
-function openContextFile() {
-    console.log("openContextFile");
-}
 
 function saveTemplateFile() {
     console.log("saveTemplateFile");
@@ -21,6 +14,15 @@ function saveTemplateFile() {
 
 function saveContextFile() {
     console.log("saveContextFile");
+}
+
+function openFile(type) {
+    showOpenFileDialog(mainWindow.getWindow(), type)
+        .then((filePath) => fileManager.readFile(filePath))
+        .then((text) => mainWindow.sendText(type, text))
+        .catch((error) => {
+            console.log(error);
+        });
 }
 
 function saveAsNewFile(type) {
@@ -39,8 +41,8 @@ app.on("ready", () => {
     mainWindow = createMainWindow();
     fileManager = createFileManager();
     setAppMenu({
-        openTemplateFile,
-        openContextFile,
+        openTemplateFile: () => openFile("template"),
+        openContextFile: () => openFile("context"),
         saveTemplateFile,
         saveContextFile,
         saveAsNewTemplateFile: () => saveAsNewFile("template"),

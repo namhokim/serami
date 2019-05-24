@@ -23,6 +23,16 @@ class MainWindow {
             ipcMain.once("REPLY_TEXT_" + type, (_e, text) => resolve(text));
         });
     }
+
+    sendText(type, text) {
+        type = type || '';
+        type = type.toUpperCase();
+        this.window.webContents.send("SEND_TEXT_" + type, text);
+    }
+
+    getWindow() {
+        return this.window;
+    }
 }
 
 function createMainWindow() {
