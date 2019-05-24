@@ -28,8 +28,8 @@ function setAppMenu(options) {
                 { type: 'separator' }, //////////
                 { label: "Save Template", accelerator: "CmdOrCtrl+S", click: () => options.saveTemplateFile() },
                 { label: "Save Context", accelerator: "CmdOrCtrl+Shift+S", click: () => options.saveContextFile() },
-                { label: "Save As Context", click: () => options.saveAsNewContextFile() },
                 { label: "Save As Template", click: () => options.saveAsNewTemplateFile() },
+                { label: "Save As Context", click: () => options.saveAsNewContextFile() },
                 { type: 'separator' },
                 isMac ? { role: 'close' } : { role: 'quit' },
             ]

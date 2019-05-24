@@ -1,3 +1,4 @@
+import { ipcRenderer } from "electron";
 import React from "react";
 import Handlebars from "handlebars";
 import SafeEval from "safe-eval";
@@ -57,6 +58,19 @@ export default class HandlebarsEditorUi extends React.Component {
             let errorMessage = `<h3>context code evalutaion error.</h3>${err}<br/><pre>${detailLocation}</pre>`;
             this.setState({ text: errorMessage });
         }
+    }
+
+    componentDidMount() {
+        ipcRenderer.on("REQUEST_TEXT_TEMPLATE", () => {
+            ipcRenderer.send("REPLY_TEXT_TEMPLATE", this.state.templateText);
+        });
+        ipcRenderer.on("REQUEST_TEXT_CONTEXT", () => {
+            ipcRenderer.send("REPLY_TEXT_CONTEXT", this.state.contextText);
+        });
+    }
+
+    componentWillUnMount() {
+        ipcRenderer.removeAllListeners();
     }
 
     render() {
