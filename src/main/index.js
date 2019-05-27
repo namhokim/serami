@@ -8,20 +8,29 @@ import createFileManager from "./createFileManager";
 let mainWindow = null;
 let fileManager = null;
 
-function saveTemplateFile() {
-    console.log("saveTemplateFile");
-}
-
-function saveContextFile() {
-    console.log("saveContextFile");
-}
-
 function openFile(type) {
     showOpenFileDialog(mainWindow.getWindow(), type)
-        .then((filePath) => fileManager.readFile(filePath))
+        .then((filePath) => fileManager.readFile(type, filePath))
         .then((text) => mainWindow.sendText(type, text))
         .catch((error) => {
             console.log(error);
+        });
+}
+
+function saveFile(type) {
+    if (typeof type !== 'string') {
+        console.log("saveFile need file type.");
+        return;
+    }
+
+    if (fileManager.isSaveAsNewFile(type)) {
+        saveAsNewFile(type);
+        return;
+    }
+    mainWindow.requestText(type)
+        .then((text) => fileManager.overwriteFile(type, text))
+        .catch((error) => {
+            console.log(`saveFile: ${errro}`);
         });
 }
 
@@ -30,10 +39,10 @@ function saveAsNewFile(type) {
         console.log("saveAsNewFile need file type.");
         return;
     }
-    Promise.all([showSaveAsNewFileDialog(type), mainWindow.requestText(type)])
-        .then(([filePath, text]) => fileManager.saveFile(filePath, text))
+    Promise.all([type, showSaveAsNewFileDialog(type), mainWindow.requestText(type)])
+        .then(([type, filePath, text]) => fileManager.saveFile(type, filePath, text))
         .catch((error) => {
-            console.log(errro);
+            console.log(`saveAsNewFile: ${errro}`);
         });
 }
 
@@ -43,8 +52,8 @@ app.on("ready", () => {
     setAppMenu({
         openTemplateFile: () => openFile("template"),
         openContextFile: () => openFile("context"),
-        saveTemplateFile,
-        saveContextFile,
+        saveTemplateFile: () => saveFile("template"),
+        saveContextFile: () => saveFile("context"),
         saveAsNewTemplateFile: () => saveAsNewFile("template"),
         saveAsNewContextFile: () => saveAsNewFile("context"),
     });
