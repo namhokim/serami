@@ -39,8 +39,8 @@ function saveAsNewFile(type) {
         console.log("saveAsNewFile need file type.");
         return;
     }
-    Promise.all([type, showSaveAsNewFileDialog(type), mainWindow.requestText(type)])
-        .then(([type, filePath, text]) => fileManager.saveFile(type, filePath, text))
+    Promise.all([showSaveAsNewFileDialog(type), mainWindow.requestText(type)])
+        .then(([filePath, text]) => fileManager.saveFile(type, filePath, text))
         .catch((error) => {
             console.log(`saveAsNewFile: ${errro}`);
         });
