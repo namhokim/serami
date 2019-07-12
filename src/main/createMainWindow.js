@@ -10,7 +10,7 @@ class MainWindow {
                 nodeIntegration: true
             }
         });
-        this.window.loadURL(`file://${__dirname}/../../index.html`);
+        this.window.loadURL(`file://${__dirname}/../index.html`);
         this.window.on("closed", () => {
             this.window = null;
         });
