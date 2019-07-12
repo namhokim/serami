@@ -1,0 +1,8 @@
+{
+    "name": "serami",
+    "productName": "Serami",
+    "version": "1.0.0",
+    "main": "main/index.js",
+    "description": "mix up handlebars with confluence",
+    "author": "namo"
+}
