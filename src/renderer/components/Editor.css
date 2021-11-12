@@ -1,12 +1,25 @@
 .editorContainer {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     height: 100%;
     width: 100%;
 }
 
+.editorTitle {
+    margin: 5px 5px 0 5px;
+}
+
+.editorLine {
+    margin: 0 10px 5px 10px;
+    padding: 0 0 0 0;
+    background:#e6e6e6;
+    height: 1px;
+}
+
 .editor {
-    width: 100%;
+    margin: 5px 5px 5px 5px;
     border: solid #ddd 1p;
     resize: none;
+    border-radius: 4px;
+    height: 100%;
 }

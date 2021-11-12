@@ -5,8 +5,10 @@ export default function Previewer(props) {
     return (
         <div
             id="previewer"
-            className={`pane ${props.className} ${style.previewer}`}
+            className={`${props.className} ${style.previewer}`}
         >
+            <h3 className={style.previewerTitle}>{props.title}</h3>
+            <div className={style.previewerLine}></div>
             <span
                 dangerouslySetInnerHTML={{ __html: props.value }}
             />

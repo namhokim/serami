@@ -3,7 +3,9 @@ import style from "./Editor.css";
 
 export default function Editor(props) {
     return (
-        <div className={`pane ${style.editorContainer}`}>
+        <div className={style.editorContainer}>
+            <h3 className={style.editorTitle}>{props.title}</h3>
+            <div className={style.editorLine}></div>
             <textarea
                 id={props.id}
                 className={`${style.editor} ${props.className}`}

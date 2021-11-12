@@ -1,6 +1,6 @@
 {
     "name": "serami",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "mix up handlebars with confluence",
     "main": "dist/main/index.js",
     "scripts": {
@@ -8,11 +8,12 @@
         "watch": "webpack --watch",
         "start": "electron .",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "package": "npm run bundle && electron-packager dist \"Serami\" --all --out=release --icon=\"icon/icon\"",
+        "package": "npm run bundle && electron-packager dist \"Serami\" --all --out=release --icon=\"icon/icon\" --app-version=$npm_package_version",
+        "package-mac": "npm run bundle && electron-packager dist \"Serami\" --platform=darwin --arch=x64 --out=release --icon=\"icon/icon\" --app-version=$npm_package_version",
+        "package-win": "npm run bundle && electron-packager dist \"Serami\" --platform=win32 --arch=x64 --out=release --icon=\"icon/icon\" --app-version=$npm_package_version",
         "bundle": "npm run prebuild && webpack",
-        "prebuild": "npm run copy:resources && npm run copy:photon",
-        "copy:resources": "cpx \"prod_resources/**/*\" dist",
-        "copy:photon": "cpx \"node_modules/photon/dist/css/**/*\" dist/css && cpx \"node_modules/photon/dist/fonts/**/*\" dist/fonts"
+        "prebuild": "npm run copy:resources",
+        "copy:resources": "cpx \"prod_resources/**/*\" dist"
     },
     "repository": {
         "type": "git",
@@ -44,9 +45,9 @@
     },
     "dependencies": {
         "handlebars": "^4.1.2",
-        "photon": "github:connors/photon",
         "react": "^16.8.6",
         "react-dom": "^16.8.6",
+        "react-panelgroup": "^1.0.12",
         "safe-eval": "^0.4.1"
     }
 }
