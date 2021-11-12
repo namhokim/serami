@@ -10,15 +10,24 @@ module.exports = {
             'handlebars': 'handlebars/dist/handlebars.js'
         }
     },
+    mode: 'production',
     module: {
-        rules: [{
+        rules: [
+            {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                loader: "babel-loader"
+                use: {
+                  loader: 'babel-loader',
+                  options: {
+                    presets: [
+                      ['@babel/preset-env', { targets: "defaults" }]
+                    ]
+                  }
+                }
             },
             {
-                test: /\.css$/,
-                loader: ["style-loader", "css-loader?modules"]
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"],
             }
         ]
     },

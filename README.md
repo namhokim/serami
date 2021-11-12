@@ -6,6 +6,22 @@
 2. Load the template and the context from confluence.
 3. Create page to confluence of the rendered page result.
 
+# install & build
+```console
+$ npm install
+$ npm run build
+```
+
+# execution
+```console
+$ npm start
+```
+
+# packaging
+```console
+$ npm run package
+```
+
 [ref1]: https://electronjs.org/
 [ref2]: http://handlebarsjs.com/
 [ref3]: https://confluence.atlassian.com/confcloud/confluence-cloud-documentation-home-941614888.html
