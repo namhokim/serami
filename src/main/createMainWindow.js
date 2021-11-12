@@ -7,7 +7,8 @@ class MainWindow {
             height: 600,
             allowEval: true,
             webPreferences: {
-                nodeIntegration: true
+                nodeIntegration: true,
+                contextIsolation: false,
             }
         });
         this.window.loadURL(`file://${__dirname}/../index.html`);
