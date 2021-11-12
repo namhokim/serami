@@ -5,3 +5,14 @@
     position: relative;
     overflow-y: scroll;
 }
+
+.previewerTitle {
+    margin: 5px 5px 0 5px;
+}
+
+.previewerLine {
+    margin: 0 10px 5px 10px;
+    padding: 0 0 0 0;
+    background:#e6e6e6;
+    height: 1px;
+}

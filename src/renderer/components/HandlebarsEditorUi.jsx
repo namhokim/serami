@@ -5,6 +5,7 @@ import SafeEval from "safe-eval";
 import Editor from "./Editor";
 import Previewer from "./Previewer";
 import style from "./HandlebarsEditorUi.css";
+import PanelGroup from "react-panelgroup"
 
 export default class HandlebarsEditorUi extends React.Component {
     constructor(props) {
@@ -83,23 +84,31 @@ export default class HandlebarsEditorUi extends React.Component {
 
     render() {
         return (
-            <div className={`pane-group ${style.handlebarsEditor}`}>
-                <Editor
-                    id="templateEditor"
-                    className={style.editorArea}
-                    value={this.state.templateText}
-                    onChange={this.onChangeTemplateText}
-                />
-                <Editor
-                    id="contextEditor"
-                    className={style.editorArea}
-                    value={this.state.contextText}
-                    onChange={this.onChangeContextText}
-                />
-                <Previewer
-                    className={style.previewerArea}
-                    value={this.state.text}
-                />
+            <div className={style.handlebarsEditor}>
+                <PanelGroup
+                    borderColor="grey"
+                    panelWidths={[{size: 200},{size: 200},{ }]}
+                >
+                    <Editor
+                        id="templateEditor"
+                        title="Template"
+                        className={style.editorArea}
+                        value={this.state.templateText}
+                        onChange={this.onChangeTemplateText}
+                    />
+                    <Editor
+                        id="contextEditor"
+                        title="Context"
+                        className={style.editorArea}
+                        value={this.state.contextText}
+                        onChange={this.onChangeContextText}
+                    />
+                    <Previewer
+                        className={style.previewerArea}
+                        title="Template Rendering"
+                        value={this.state.text}
+                    />
+                </PanelGroup>
             </div>
         )
     }
