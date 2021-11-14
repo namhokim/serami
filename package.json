@@ -1,8 +1,8 @@
 {
     "name": "serami",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "mix up handlebars with confluence",
-    "main": "dist/main/index.js",
+    "main": "dist/index.js",
     "scripts": {
         "build": "webpack",
         "clean": "rm -rf node_modules && rm -rf dist && rm -rf release",

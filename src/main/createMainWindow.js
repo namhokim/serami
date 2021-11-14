@@ -1,4 +1,5 @@
 const { BrowserWindow, ipcMain } = require("electron");
+const path = require("path");
 
 class MainWindow {
     constructor() {
@@ -11,7 +12,7 @@ class MainWindow {
                 contextIsolation: false,
             }
         });
-        this.window.loadURL(`file://${__dirname}/../index.html`);
+        this.window.loadFile(path.join(__dirname, "index.html"));
         this.window.on("closed", () => {
             this.window = null;
         });
