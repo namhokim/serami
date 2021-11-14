@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
     target: "electron-renderer",
     node: {
@@ -23,11 +25,12 @@ module.exports = {
         ]
     },
     entry: {
-        "main/index": "./src/main/index.js",
+        "index": "./src/main/index.js",
         "renderer/app": "./src/renderer/app.jsx"
     },
     output: {
-        filename: "dist/[name].js"
+        path: path.resolve(__dirname, 'dist'),
+        filename: "[name].js"
     },
     devtool: "source-map"
 };
